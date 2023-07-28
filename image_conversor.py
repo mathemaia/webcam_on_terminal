@@ -25,19 +25,19 @@ def convert_image(image, size):
     min = 50
     max = 75
     mask = (image > min) & (image <= max)
-    new_image[mask] = ':'
+    new_image[mask] = '+'
 
     # *
     min = 75
     max = 100
     mask = (image > min) & (image <= max)
-    new_image[mask] = '*'
+    new_image[mask] = ':'
 
     # !
     min = 100
     max = 125
     mask = (image > min) & (image <= max)
-    new_image[mask] = '+'
+    new_image[mask] = '*'
 
     # ?
     min = 125
