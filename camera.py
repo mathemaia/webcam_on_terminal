@@ -3,26 +3,13 @@ import subprocess
 
 # VIRTUAL ENVIROMENT
 ###################################################################################################
-def verificar_e_instalar_biblioteca(biblioteca):
-    try:
-        __import__(biblioteca)
-        print(f'Biblioteca {biblioteca} já está instalada.')
-    except ImportError:
-        if biblioteca == 'cv2':
-            subprocess.check_call(['pip', 'install', 'opencv-python'])
-        else:
-            subprocess.check_call(['pip', 'install', biblioteca])
-        subprocess.check_call(['pip', 'install', biblioteca])
-        print(f'Biblioteca {biblioteca} instalada com sucesso.')
+subprocess.check_call(['pip', 'install', 'numpy'])
+subprocess.check_call(['pip', 'install', 'opencv-python'])
+subprocess.check_call(['pip', 'install', 'tk'])
 
-bibliotecas = ['tk', 'numpy', 'cv2']
-
-for biblioteca in bibliotecas:
-    verificar_e_instalar_biblioteca(biblioteca)
-
-import tkinter as tk
-import numpy
+import numpy as np
 import cv2
+import tkinter as tk
 ###################################################################################################
 
 
@@ -33,7 +20,7 @@ def convert_image(image, size):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     image = cv2.resize(image, (round(image.shape[1] * (1/size)), round(image.shape[0] * (1/size))))
 
-    new_image = numpy.zeros((image.shape[0], image.shape[1])).astype(int).astype(str)
+    new_image = np.zeros((image.shape[0], image.shape[1])).astype(int).astype(str)
 
     # .
     min = 0
