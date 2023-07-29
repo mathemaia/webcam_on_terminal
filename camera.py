@@ -1,6 +1,7 @@
 import subprocess
 
 
+
 # VIRTUAL ENVIROMENT
 ###################################################################################################
 subprocess.check_call(['pip', 'install', 'numpy'])
@@ -68,17 +69,17 @@ def convert_image(image, size):
     min = 175
     max = 200
     mask = (image > min) & (image <= max)
-    new_image[mask] = '0'
+    new_image[mask] = '&'
 
     # 0
     min = 200
     max = 225
     mask = (image > min) & (image <= max)
-    new_image[mask] = '&'
+    new_image[mask] = '#'
 
     # @
     min = 225
-    max = 250
+    max = 255
     mask = (image > min) & (image <= max)
     new_image[mask] = '@'
 
@@ -137,4 +138,5 @@ update_frame()
 cap.release()  # Liberar a captura da câmera após fechar a janela
 
 root.mainloop()
+###################################################################################################
 ###################################################################################################
