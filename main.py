@@ -1,35 +1,66 @@
-import curses
-import time
-import numpy as np
-from image_conversor import convert_image
+from utils.image_conversor import convert_image
+from utils.matrix_transformation import format_matrix
+from utils.print_frame import print_frame
+import subprocess
+
+
+# import or install Numpy
+try:
+	__import__('numpy')
+except:
+    subprocess.check_call(['pip', 'install', 'numpy'])
+
+# import or install OpenCV
+try:
+    __import__('cv2')
+except:
+    subprocess.check_call(['pip', 'install', 'opencv-python'])
 import cv2
-import os
-import sys
+
+# import or install Tkinter
+try:
+    __import__('tk')
+except:
+    subprocess.check_call(['pip', 'install', 'tk'])
+import tkinter as tk
 
 
-def print_frame(frame):
-    # Sequência de escape ANSI para limpar a tela
-    print("\033[2J", end='')
+### MAIN
+if __name__ == '__main__':
+    # create the window
+    root = tk.Tk()
+    root.title("Vídeo ASCII")
+    root.configure(bg="black")  
 
-    np.savetxt(sys.stdout, frame, delimiter='', fmt='%2s')
-
-    # Sequência de escape ANSI para posicionar o cursor no início da tela
-    print("\033[H", end='')
-
-
-
-# Tamanho da tela
-rows, columns = os.popen('stty size', 'r').read().split()
-rows, columns = int(rows), int(columns)
-
-# Posição inicial do frame (no centro da tela)
-frame_y = rows // 2 - 480 // 2
-frame_x = columns // 2 - 640 * (1 + 2) // 2  # Contabiliza o espaço entre os caracteres
+    # create a label to show the matrix of the frame
+    label = tk.Label(root, text="", font=("Courier New", 10), bg="black", fg="#777777")
+    label.pack()
 
 
+    # access the camera
+    cap = cv2.VideoCapture(0)
 
-cap = cv2.VideoCapture(0)
-while True:
-	ret, frame = cap.read()
+    # verify the camera's integrity
+    if not cap.isOpened():
+        print("Erro ao abrir a câmera.")
+        cap.release()
+        exit()
+    
+    # take the webcam's frame and do the transformation
+    while True:
+        ret, frame = cap.read()
 
-	print_frame(convert_image(frame, 9))
+        if not ret:  
+            break
+        frame = convert_image(frame, 5)
+        formatted_matrix = format_matrix(frame)
+
+        try:
+            if root.winfo_exists():
+                label.config(text=formatted_matrix)
+                root.update()
+        except tk.TclError:
+            break
+        
+    cap.release()
+    root.mainloop()
