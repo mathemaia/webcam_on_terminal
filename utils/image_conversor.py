@@ -6,7 +6,7 @@ def convert_image(image, size):
     '''Take the frame and transform it in a matrix of strings. The frame is converted to grayscale and each element is substituted
     according to the interval of intensity.'''
 
-    
+
     # get the frame and convert to grayscale
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -72,7 +72,7 @@ def convert_image(image, size):
 
     # @
     min = 225
-    max = 250
+    max = 255
     mask = (image > min) & (image <= max)
     new_image[mask] = '@'
 

@@ -1,5 +1,5 @@
 from utils.image_conversor import convert_image
-from utils.matrix_transformation import format_matrix
+from utils.matrix_formatation import format_matrix
 from utils.print_frame import print_frame
 import subprocess
 import sys
