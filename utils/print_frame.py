@@ -2,10 +2,13 @@ import numpy as np
 import sys
 
 def print_frame(frame):
-    # Sequência de escape ANSI para limpar a tela
+    '''Print the frame on terminal and reposition it on the same place to give the impression of movemant'''
+    
+    # ANSI scape sequence to clean the terminal
     print("\033[2J", end='')
 
+    # print the frame on terminal
     np.savetxt(sys.stdout, frame, delimiter='', fmt='%2s')
 
-    # Sequência de escape ANSI para posicionar o cursor no início da tela
+    # ANSI scape sequence to put the cursor on the beggining oh terminal
     print("\033[H", end='')
