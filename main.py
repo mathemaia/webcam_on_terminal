@@ -48,7 +48,7 @@ if __name__ == '__main__':
         root.configure(bg="black")  
 
         # create a label to show the matrix of the frame
-        label = tk.Label(root, text="", font=("Courier New", 10), bg="black", fg="#777777")
+        label = tk.Label(root, text="", font=("Courier New", 10), bg="black", fg="white")
         label.pack()
 
         # verify the camera's integrity
