@@ -2,7 +2,7 @@
 webcam_on_terminal is a little project that opens the webcam video on Linux's terminal. 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mathemaia/webcam_on_terminal/data/demonstracao.gif">
+  <img src="https://github.com/mathemaia/webcam_on_terminal/blob/main/data/demonstracao.gif">
 </p>
 
 # Dependencies installation
