@@ -49,4 +49,4 @@ The ten intervals mentioned was chosen arbitrarily, and the choice of the ten co
 <p align="center"><em><strong>. + : * = 4 0 & @</strong></em></p>
 
 # Contributing to the project
-If you want to contributing to the project correcting bugs or new functionalities, please be welcome to contact to do the pull request.
+If you want to be contributing to the project correcting bugs or new functionalities, please be welcome to contact to do the pull request.
