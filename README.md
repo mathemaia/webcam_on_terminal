@@ -14,7 +14,7 @@ pip install opencv-python
 pip install tk
 ```
 
-# Execution
+# Execution:
 There are two ways to execute the program, and both differs the results:
 
 - ## Running on window mode
@@ -30,3 +30,8 @@ python3 main.py terminal
 ```
 
 # How does it work?
+OpenCV was used to access and get the frames of webcam. Each frame is passed to a function that does a transformation in the matrix frame. The image bellow shows the steps of this process.
+
+<p align="center">
+  <img src="https://github.com/mathemaia/webcam_on_terminal/blob/main/data/all.png">
+</p>
